@@ -1,3 +1,4 @@
+'use server';
 
 /**
  * Represents user details.
@@ -55,8 +56,6 @@ export async function storeUserDetails(userDetails: UserDetails): Promise<void> 
 
 async function readUsersFromFile(): Promise<UserDetails[]> {
   try {
-    // Next.js doesn't directly support reading files from the file system in a client component.
-    // This code is intended for a server-side environment.
     const fs = require('fs').promises;
     const path = require('path');
     const filePath = path.join(process.cwd(), USERS_FILE);
@@ -76,8 +75,6 @@ async function readUsersFromFile(): Promise<UserDetails[]> {
 
 async function writeUsersToFile(users: UserDetails[]): Promise<void> {
   try {
-    // Next.js doesn't directly support writing files from the file system in a client component.
-    // This code is intended for a server-side environment.
     const fs = require('fs').promises;
     const path = require('path');
     const filePath = path.join(process.cwd(), USERS_FILE);
@@ -87,3 +84,4 @@ async function writeUsersToFile(users: UserDetails[]): Promise<void> {
     throw error;
   }
 }
+

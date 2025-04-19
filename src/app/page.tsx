@@ -1,4 +1,3 @@
-
 'use client';
 
 import {useState} from 'react';
@@ -7,9 +6,10 @@ import {Button} from '@/components/ui/button';
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
 import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
-import {getUserDetails, storeUserDetails} from '@/services/user-authentication';
+import {getUserDetails} from '@/services/user-authentication';
 import {UserDetails} from '@/services/user-authentication';
 import {toast} from '@/hooks/use-toast';
+import {storeUserDetails} from './actions';
 
 export default function Home() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -41,10 +41,10 @@ export default function Home() {
         description: 'Sign up successful!',
       });
       router.push('/dashboard');
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: 'Error',
-        description: 'Failed to sign up. Please try again.',
+        description: error.message || 'Failed to sign up. Please try again.',
         variant: 'destructive',
       });
     }
@@ -139,4 +139,3 @@ export default function Home() {
     </div>
   );
 }
-
