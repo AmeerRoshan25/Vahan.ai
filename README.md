@@ -75,9 +75,6 @@ Follow-up questions and response integration
 
 
 
-📹 Demo
-[Link to video demo or screenshots folder]
-
 
 ❗ Limitations
 Live research via APIs is simulated in prototype mode
