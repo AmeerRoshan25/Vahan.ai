@@ -1,1 +1,3 @@
-// Flows will be imported for their side effects in this file.
+import '@/ai/flows/interactive-questioning.ts';
+import '@/ai/flows/research-engine.ts';
+import '@/ai/flows/report-generation.ts';
