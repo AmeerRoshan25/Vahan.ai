@@ -6,10 +6,9 @@ import {Button} from '@/components/ui/button';
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
 import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
-import {getUserDetails} from '@/services/user-authentication';
 import {UserDetails} from '@/services/user-authentication';
 import {toast} from '@/hooks/use-toast';
-import {storeUserDetails} from './actions';
+import {storeUserDetails, getUserDetailsByPhoneNumber} from './actions';
 
 export default function Home() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -61,7 +60,7 @@ export default function Home() {
     }
 
     try {
-      const userDetails = await getUserDetails(phoneNumber);
+      const userDetails = await getUserDetailsByPhoneNumber(phoneNumber);
       if (userDetails && userDetails.password === password) {
         toast({
           title: 'Success',

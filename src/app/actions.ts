@@ -17,6 +17,18 @@ export async function storeUserDetails(userDetails: UserDetails): Promise<void> 
   }
 }
 
+export async function getUserDetailsByPhoneNumber(phoneNumber: string): Promise<UserDetails | null> {
+  try {
+    const users = await readUsersFromFile();
+    const user = users.find((user: UserDetails) => user.phoneNumber === phoneNumber);
+    return user || null;
+  } catch (error: any) {
+    console.error('Error retrieving user details:', error);
+    return null;
+  }
+}
+
+
 async function readUsersFromFile(): Promise<UserDetails[]> {
   try {
     const fs = require('fs').promises;
